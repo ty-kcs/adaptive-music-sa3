@@ -1,0 +1,40 @@
+[project]
+name = "adaptive-music-sa3"
+version = "0.1.0"
+description = "Musicality-controlled SA3 editing with DSP metrics and endpoint BO"
+requires-python = ">=3.10"
+dependencies = [
+    "stable-audio-3",
+    "gradio>=4.44.0",
+    "librosa>=0.10.2",
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    "torchaudio>=2.2.0",
+    "soundfile>=0.12.1",
+    "scikit-optimize>=0.10.0",
+    "matplotlib>=3.8.0",
+    "pytest>=8.0.0",
+]
+
+[project.scripts]
+adaptive-music-sa3 = "adaptive_music_sa3.ui.app:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/adaptive_music_sa3"]
+
+[tool.hatch.build.targets.wheel.sources]
+"src/adaptive_music_sa3" = "adaptive_music_sa3"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.uv.sources]
+stable-audio-3 = { path = "../stable-audio-3", editable = true }
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

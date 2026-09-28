@@ -1,0 +1,348 @@
+{
+  "methods": {
+    "flowedit": {
+      "theta0": {
+        "t_start": 0.3,
+        "tgt_cfg": 9.884237168885033,
+        "src_cfg": 3.0,
+        "t_stop": 0.0
+      },
+      "theta1": {
+        "t_start": 1.0,
+        "tgt_cfg": 12.0,
+        "src_cfg": 1.0,
+        "t_stop": 0.24188410451564984
+      }
+    },
+    "rfinv_mp": {
+      "theta0": {
+        "eta": 1.0,
+        "cfg": 6.820958031648711,
+        "stop": 0.7465769794032469,
+        "start": 0.0
+      },
+      "theta1": {
+        "eta": 0.0,
+        "cfg": 4.168415346718549,
+        "stop": 0.5,
+        "start": 0.09674775650710106
+      }
+    },
+    "rfinv_fp": {
+      "theta0": {
+        "eta": 0.9119761691096412,
+        "cfg": 1.0,
+        "stop": 1.0,
+        "start": 0.056140367837978274
+      },
+      "theta1": {
+        "eta": 0.13385385090717394,
+        "cfg": 5.198174728105124,
+        "stop": 0.5424201532708096,
+        "start": 0.10041877794933557
+      }
+    }
+  },
+  "meta": {
+    "search_n": 11,
+    "val_n": 32,
+    "steps": 50,
+    "seconds": 10.0,
+    "m_grid": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "library_root": "/home/tai/furniture_music/environmental_dataset",
+    "categories": [
+      "airport",
+      "birds",
+      "city",
+      "hospital",
+      "london_canal",
+      "london_park",
+      "london_station",
+      "london_street",
+      "ocean",
+      "office",
+      "rain"
+    ],
+    "methods": {
+      "flowedit": {
+        "search_J": 0.5499999999999999,
+        "val_J": 0.3359374999999999,
+        "theta0": {
+          "t_start": 0.3,
+          "tgt_cfg": 9.884237168885033,
+          "src_cfg": 3.0,
+          "t_stop": 0.0
+        },
+        "theta1": {
+          "t_start": 1.0,
+          "tgt_cfg": 12.0,
+          "src_cfg": 1.0,
+          "t_stop": 0.24188410451564984
+        }
+      },
+      "rfinv_mp": {
+        "search_J": 0.35454545454545455,
+        "val_J": 0.19999999999999996,
+        "theta0": {
+          "eta": 1.0,
+          "cfg": 6.820958031648711,
+          "stop": 0.7465769794032469,
+          "start": 0.0
+        },
+        "theta1": {
+          "eta": 0.0,
+          "cfg": 4.168415346718549,
+          "stop": 0.5,
+          "start": 0.09674775650710106
+        }
+      },
+      "rfinv_fp": {
+        "search_J": 0.39999999999999986,
+        "val_J": 0.16249999999999992,
+        "theta0": {
+          "eta": 0.9119761691096412,
+          "cfg": 1.0,
+          "stop": 1.0,
+          "start": 0.056140367837978274
+        },
+        "theta1": {
+          "eta": 0.13385385090717394,
+          "cfg": 5.198174728105124,
+          "stop": 0.5424201532708096,
+          "start": 0.10041877794933557
+        }
+      }
+    },
+    "full_library_J": {
+      "flowedit": 0.2996527777777777,
+      "rfinv_mp": 0.2645833333333332,
+      "rfinv_fp": 0.10902777777777772
+    },
+    "seed": 0,
+    "ladder": "glitch",
+    "search_clips": [
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__T-high__00795s__T0.53__0010s_4s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/birds/birds__T-high__02920s.mp3",
+        "category": "birds"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__H-high__00230s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/hospital/hospital_449015__T-high__00010s.mp3",
+        "category": "hospital"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_canal/W11a__Regents_Canal_at_the_Paddington_Station.wav",
+        "category": "london_canal"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_park/W22__Regents_Canal_at_the_London_Zoo.wav",
+        "category": "london_park"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_station/CT301__Camden_Town_Station.wav",
+        "category": "london_station"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_street/HR01__Highgate_Road.wav",
+        "category": "london_street"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/ocean/ocean__T-high__00230s.mp3",
+        "category": "ocean"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_843683__H-high__00000s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/rain/rain__T-high__00160s.mp3",
+        "category": "rain"
+      }
+    ],
+    "val_clips": [
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__T-high__00180s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/birds/birds__T-high__02915s.mp3",
+        "category": "birds"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_park/N1__Alexandra_Park.wav",
+        "category": "london_park"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__T-high__00115s__T0.49__0008s_4s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_843683__T-high__00015s__T0.53__0002s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__TH-high__00085s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_843683__H-high__00045s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__H-high__00030s__H0.40__0008s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/hospital/hospital_449015__T0.71__0042s_4s.mp3",
+        "category": "hospital"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__H-high__00165s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_843683__H0.57__0051s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__T-high__00795s__T0.73__0005s_6s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__H0.41__0040s_6s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__T-high__00045s__T0.55__0011s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__H-high__00455s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__T0.59__0046s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_park/W22__Regents_Canal_at_the_London_Zoo.wav",
+        "category": "london_park"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/ocean/ocean__T-high__00300s__T0.59__0002s_4s.mp3",
+        "category": "ocean"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__H0.57__0045s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__T-high__00115s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_street/KT01__Ospringe_Road.wav",
+        "category": "london_street"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/rain/rain__T-high__00080s.mp3",
+        "category": "rain"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/birds/birds__H-high__00430s.mp3",
+        "category": "birds"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/rain/rain__T-high__00160s.mp3",
+        "category": "rain"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__TH-low__00030s__TH0.43__0003s_4s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__T-high__00155s__T0.58__0001s_4s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__T-high__00155s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_843683__H-high__00000s__H0.33__0007s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/ocean/ocean__H-high__00225s.mp3",
+        "category": "ocean"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/london_station/CT301__Camden_Town_Station.wav",
+        "category": "london_station"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__H-high__00510s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__T0.56__0057s_4s.mp3",
+        "category": "office"
+      }
+    ]
+  },
+  "flowedit": {
+    "theta0": {
+      "t_start": 0.3,
+      "tgt_cfg": 9.884237168885033,
+      "src_cfg": 3.0,
+      "t_stop": 0.0
+    },
+    "theta1": {
+      "t_start": 1.0,
+      "tgt_cfg": 12.0,
+      "src_cfg": 1.0,
+      "t_stop": 0.24188410451564984
+    }
+  },
+  "rfinv_mp": {
+    "theta0": {
+      "eta": 1.0,
+      "cfg": 6.820958031648711,
+      "stop": 0.7465769794032469,
+      "start": 0.0
+    },
+    "theta1": {
+      "eta": 0.0,
+      "cfg": 4.168415346718549,
+      "stop": 0.5,
+      "start": 0.09674775650710106
+    }
+  },
+  "rfinv_fp": {
+    "theta0": {
+      "eta": 0.9119761691096412,
+      "cfg": 1.0,
+      "stop": 1.0,
+      "start": 0.056140367837978274
+    },
+    "theta1": {
+      "eta": 0.13385385090717394,
+      "cfg": 5.198174728105124,
+      "stop": 0.5424201532708096,
+      "start": 0.10041877794933557
+    }
+  }
+}

@@ -10,4 +10,6 @@ tests/
 scripts/
 .DS_Store
 artifacts/*.wav
+artifacts/**/*.wav
+artifacts/ts_listen/
 artifacts/tmp/

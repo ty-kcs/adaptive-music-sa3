@@ -1,7 +1,7 @@
 {
   "corners": {
     "theta00": {
-      "t_start": 0.7846233901729589,
+      "t_start": 0.304134789120444,
       "tgt_cfg": 1.0,
       "src_cfg": 3.0,
       "t_stop": 0.0
@@ -13,14 +13,14 @@
       "t_stop": 0.0
     },
     "theta01": {
-      "t_start": 0.3,
+      "t_start": 1.0,
       "tgt_cfg": 1.0,
       "src_cfg": 3.0,
       "t_stop": 0.0
     },
     "theta11": {
       "t_start": 1.0,
-      "tgt_cfg": 12.0,
+      "tgt_cfg": 9.620475974915427,
       "src_cfg": 3.0,
       "t_stop": 0.0
     },
@@ -32,9 +32,11 @@
   "meta": {
     "mode": "ts_corners",
     "search_n": 11,
-    "val_n": 8,
+    "val_n": 16,
     "steps": 50,
     "seconds": 10.0,
+    "seed": 0,
+    "ladder": "glitch",
     "ts_grid": [
       [
         0.0,
@@ -151,14 +153,6 @@
       "office",
       "rain"
     ],
-    "search_J": -2.748981337376204,
-    "val_J": -3.298245342258417,
-    "frozen": {
-      "src_cfg": 3.0,
-      "t_stop": 0.0
-    },
-    "seed": 0,
-    "ladder": "glitch",
     "search_clips": [
       {
         "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__T-high__00795s__T0.53__0010s_4s.mp3",
@@ -237,7 +231,45 @@
       {
         "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__H-high__00030s__H0.40__0008s_4s.mp3",
         "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/hospital/hospital_449015__T0.71__0042s_4s.mp3",
+        "category": "hospital"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/city/city__H-high__00165s.mp3",
+        "category": "city"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_843683__H0.57__0051s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__T-high__00795s__T0.73__0005s_6s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__H0.41__0040s_6s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__T-high__00045s__T0.55__0011s_4s.mp3",
+        "category": "office"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/airport/airport_869990__H-high__00455s.mp3",
+        "category": "airport"
+      },
+      {
+        "path": "/home/tai/furniture_music/environmental_dataset/office/office_765317__T0.59__0046s_4s.mp3",
+        "category": "office"
       }
-    ]
+    ],
+    "search_J": -3.3130624240020055,
+    "val_J": -3.2296815966659564,
+    "frozen": {
+      "src_cfg": 3.0,
+      "t_stop": 0.0
+    }
   }
 }

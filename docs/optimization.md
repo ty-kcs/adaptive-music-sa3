@@ -69,51 +69,7 @@ Monotonicity of `tc` along T (at each fixed S) and of `hc` along S
 Lookup is the nearest cell to each corner (works for 5×5 and the
 Phase-1 3×3). If a corner is missing, the hinge is 0.
 
-### How this $J$ got here
-
-The 1-D prototype used a single knob $M$ and rewarded
-$\rho(M,\widehat{M})$ plus $\rho(M,\mathrm{drift})$. When we split
-the knob into T and S, the first T/S objective kept that drift term
-but with $M=0.5T+0.5S$, and added the on-axis / cross-talk Spearmans
-so the two DSP axes would not collapse onto one diagonal.
-
-That was not enough. $(1,0)$ and $(0,1)$ share the same $M=0.5$, so
-$\rho(M,\mathrm{drift})$ does not care whether *both* axes actually
-edit. Phase 0 could park the S-high corner $\theta_{01}$ at a weak
-bound (low `t_start`, `tgt_cfg` ≈ `src_cfg`). Listening then matched
-the math: S at 1 with T low barely moved the clip, because bilinear
-interpolation sat on that weak corner.
-
-Spearman also does not demand a numeric gap. A loud corner can drift
-almost as little as `(0,0)` and still look “ranked” if the rest of
-the grid is orderly.
-
-So the average $M$ was replaced by $\max(T,S)$ (“at least one knob
-high means more change”), and a hinge was added so the three loud
-corners must beat `(0,0)` by a margin. Independence terms are
-unchanged.
-
 Phase 0 maximizes **mean $J$** over search clips, then re-ranks a
-shortlist on a validation set. Existing `artifacts/g0_ts.json` was
-fit with the older $\rho(M,\mathrm{drift})$ (no hinge). Phase 1
-Optimize (non-demo UI) already uses this $J$.
+shortlist on a validation set. 
 
-Optimizer: `skopt.gp_minimize` on $-J$. The search starts from a
-quiet corner, a loud corner, and two midpoints.
-
-## Time
-
-Wall time is the **edits**, not the Gaussian process. Phase 0: one
-trial is 25 FlowEdit passes × search clips. Phase 1 (UI Optimize):
-9 edits × local Bayesian-optimization calls on this clip.
-
-```bash
-uv run python -m adaptive_music_sa3.fit --device cuda --ts-corners
-```
-
-## Limits
-
-- Low command on ambient audio often means “barely edit,” not
-“destroy pulse on a rhythmic source.”
-- 15 calls in 8-D is a short search.
-- `tc` / `hc` are DSP proxies, not a listening test.
+Optimizer: `skopt.gp_minimize` on $-J$. 

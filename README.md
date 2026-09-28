@@ -2,10 +2,6 @@
 
 *English below / [日本語はこちら](#日本語)*
 
-Research / PoC: edit recorded ambience so latent musical structure is
-easier to hear — not BGM over noise. Knobs are **T** (temporal
-regularity) and **S** (spectral / harmonic coherence).
-
 T/S uses four FlowEdit corners and independent prompts. Details:
 [docs/optimization.md](docs/optimization.md).
 
@@ -67,10 +63,6 @@ See [docs/optimization.md](docs/optimization.md).
 
 
 # 日本語
-
-環境音に潜む音楽的な構造を聴こえやすくする編集の研究用 PoC。
-BGM で隠すものではありません。ノブは **T**（時間的な規則性）と
-**S**（スペクトル / 和声）。
 
 T/S は FlowEdit の四隅と独立プロンプト。説明:
 [docs/optimization.md](docs/optimization.md)（英語）。

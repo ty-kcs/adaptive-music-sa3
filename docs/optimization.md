@@ -1,40 +1,57 @@
 # Optimization (T / S corners)
 
-Phase 0 searches FlowEdit **corners** so commanded T and S
-move two DSP axes separately: `tc` (temporal regularity) and `hc`
-(spectral / harmonic coherence). 
-Prompts are fixed tables, not searched.
+The UI sliders are **T** (temporal regularity) and **S** (spectral /
+harmonic coherence). For each `(T, S)` we run
+**FlowEdit** with a small parameter dictionary θ (`t_start`, `tgt_cfg`,
+…) and a prompt from a fixed table. Optimization only searches those
+FlowEdit settings.
+
+**Generate** (including `--demo`) loads a precomputed parameteer json file and edits the upload at the requested `(T, S)`. (so simply running the sa-3 model. fast.)
+
+## Phase 0 and Phase 1
+
+**Phase 0** takes time. Bayesian optimization tries
+many candidate maps on 11 different types of ambient clips, keeps the one with the
+best mean score $J$, and writes `g0_ts.json`. That file is meant to
+be reused.
+
+**Phase 1** is a per-clip **Optimize** button: a short local search
+around `g0_ts.json` on a 3×3 grid. It is implemented, but so far it
+does not clearly improve from Phase 0, so `--demo` does not show it.
+
+## What one trial for bayesian optimization does
+
+1. Propose eight numbers: `t_start` and `tgt_cfg` at each of the four
+   corners. `src_cfg` and `t_stop` stay fixed for now.
+2. Turn those into four θ dictionaries. Any other `(T, S)` is a
+   bilinear mix of the four (see Map).
+3. Edit the search clips on a grid of commanded `(T, S)` — 5×5 in
+   Phase 0, 3×3 in Phase 1.
+4. Measure DSP `tc` / `hc` and latent drift from the source. Fold that
+   into a scalar $J$ (higher is better).
+5. Repeat. `skopt.gp_minimize` maximizes mean $J$ (it minimizes $-J$).
+   Phase 0 then re-ranks a shortlist on a held-out validation set.
 
 ## Map
 
-We store four FlowEdit parameter dictionaries, one at each corner of
-the unit square: `(T,S) = (0,0)`, `(1,0)`, `(0,1)`, `(1,1)`.
+We store four FlowEdit dictionaries, one at each corner of the unit
+square: `(T,S) = (0,0)`, `(1,0)`, `(0,1)`, `(1,1)`.
 
-Anywhere between those corners, FlowEdit parameters are a bilinear mix
-of the four dictionaries. For example `(0.5, 0.5)` is an equal blend;
-`(1, 0)` is exactly the T-high / S-low corner.
+Anywhere between those corners, parameters are a bilinear mix. For
+example `(0.5, 0.5)` is an equal blend; `(1, 0)` is exactly the T-high
+/ S-low corner.
 
 $$
 \theta(T,S)=(1-T)(1-S)\theta_{00}+T(1-S)\theta_{10}+(1-T)S\theta_{01}+TS\theta_{11}.
 $$
 
-Bayesian optimization moves only `t_start` and `tgt_cfg` at each
-corner (eight numbers). `src_cfg` and `t_stop` are fixed for now.
-
 Prompt: `"{genre}, {T phrase}, {S phrase}"` (five rungs on each axis).
-Each trial scores a **5×5 grid**: every pair of T and S in
+The Phase-0 grid is every pair of T and S in
 `{0, 0.25, 0.5, 0.75, 1}` (25 edits).
 
-Writes `artifacts/g0_ts.json`. Gradio **Generate** loads that file and
-edits at independent `(T, S)` (bilinear θ + T/S prompts). **Optimize**
-is Phase 1: local Bayesian optimization of those eight numbers on a
-**3×3** grid (not 5×5) around `g0_ts`. That local search is still
-weak in practice, so the `--demo` UI hides it.
+## Objective $J$
 
-## Objective
-
-One trial renders the 25 cells, then scores how well the knobs did
-what we asked. Higher $J$ is better.
+$J$ asks: did the knobs do what we asked? Higher is better.
 
 $$
 \begin{aligned}
@@ -50,26 +67,20 @@ $\rho$ is Spearman rank correlation (0 if a series is constant).
 Defaults: $\lambda_x=0.5$, $\lambda_m=0.3$, $\lambda_c=1.0$,
 margin $m=0.08$.
 
-**On-axis (first line).** Commanded T should track DSP temporal
-regularity `tc`; commanded S should track spectral / harmonic
-coherence `hc`. This is the actual T/S control.
+**On-axis.** Commanded T should track DSP `tc`; commanded S should
+track `hc`. This is the actual T/S control.
 
-**Cross-talk (second line).** T should *not* drag `hc` with it, and S
-should *not* drag `tc`. Absolute correlation is penalized so a map
-that swaps the axes, or that only moves a single “musicality”
-diagonal, scores worse.
+**Cross-talk.** T should *not* drag `hc`, and S should *not* drag
+`tc`. A map that swaps the axes, or that only moves a single
+“musicality” diagonal, scores worse.
 
-**Amount of change (third line).** Latent drift from the source should
-rise when *either* knob is high — $\max(T,S)$, not an average.
-Monotonicity of `tc` along T (at each fixed S) and of `hc` along S
-(at each fixed T) is counted as violations and subtracted.
+**Amount of change.** Drift from the source should rise when *either*
+knob is high — $\max(T,S)$, not an average. We also count
+non-monotonic steps of `tc` along T (fixed S) and of `hc` along S
+(fixed T).
 
-**Loud-corner hinge (last line).** The three "edited" corners `(1,0)`,
-`(0,1)`, `(1,1)` must drift more than `(0,0)` by at least margin $m$.
-Lookup is the nearest cell to each corner (works for 5×5 and the
-Phase-1 3×3). If a corner is missing, the hinge is 0.
-
-Phase 0 maximizes **mean $J$** over search clips, then re-ranks a
-shortlist on a validation set. 
-
-Optimizer: `skopt.gp_minimize` on $-J$. 
+**Loud-corner hinge.** `(1,0)`, `(0,1)`, and `(1,1)` (edited ones) must drift more
+than `(0,0)` by at least margin $m$. (An earlier $J$ used
+$M=0.5T+0.5S$ instead of $\max(T,S)$ and had no hinge; then the
+S-high corner could stay almost unedited because $(1,0)$ and $(0,1)$
+share the same $M$.)

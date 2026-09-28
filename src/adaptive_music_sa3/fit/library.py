@@ -59,7 +59,7 @@ AUDIO_EXTS = {
     ".wma",
     ".webm",
 }
-EXCLUDE_CATEGORIES = frozenset({"generated"})
+EXCLUDE_CATEGORIES = frozenset({"generated", "used_for_training"})
 
 
 def _fmt_dur(seconds: float) -> str:

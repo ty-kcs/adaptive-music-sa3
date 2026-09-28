@@ -64,7 +64,7 @@ rise when *either* knob is high — $\max(T,S)$, not an average.
 Monotonicity of `tc` along T (at each fixed S) and of `hc` along S
 (at each fixed T) is counted as violations and subtracted.
 
-**Loud-corner hinge (last line).** The three “loud” corners `(1,0)`,
+**Loud-corner hinge (last line).** The three "edited" corners `(1,0)`,
 `(0,1)`, `(1,1)` must drift more than `(0,0)` by at least margin $m$.
 Lookup is the nearest cell to each corner (works for 5×5 and the
 Phase-1 3×3). If a corner is missing, the hinge is 0.

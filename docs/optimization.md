@@ -2,7 +2,7 @@
 
 Phase 0 searches FlowEdit **corners** so commanded T and S
 move two DSP axes separately: `tc` (temporal regularity) and `hc`
-(spectral / harmonic coherence). We do **not** train SA3 weights.
+(spectral / harmonic coherence). 
 Prompts are fixed tables, not searched.
 
 ## Map
